@@ -45,7 +45,20 @@ public class LinkedList<T> {
         }
     }
 
+    public void addAtEnd(T data) { //add nodes at end postion of Linked List
+        Node<T> newNode = new Node<T>(data);
+        if(head == null) {
 
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            tail.Next = newNode;
+            tail = newNode;
+        }
+    }
+
+   
     public void displayList() { // display linked List
         Node<T> current=head;
 
@@ -66,10 +79,12 @@ public class LinkedList<T> {
 
     public static void main(String[] args) {
         LinkedList list=new LinkedList();
-        
-        list.addNode(70);
-        list.addNode(30);
-        list.addNode(56);
+
+        list.addAtEnd(30);
+        list.addAtEnd(56);
+        list.addAtEnd(70);
+
+
         list.displayList();
 
 
