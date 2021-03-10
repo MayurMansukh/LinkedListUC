@@ -1,3 +1,5 @@
+
+
 public class LinkedList<T> {
 
     class Node<T>{
@@ -28,6 +30,22 @@ public class LinkedList<T> {
 
             }
 
+    public void addAtStart(T data) { // add nodes at first postion in LinkedList
+
+        Node<T> newNode = new Node<T>(data);
+
+        if(head == null) {
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            Node temp = head;
+            head = newNode;
+            head.Next = temp;
+        }
+    }
+
+
     public void displayList() { // display linked List
         Node<T> current=head;
 
@@ -48,12 +66,14 @@ public class LinkedList<T> {
 
     public static void main(String[] args) {
         LinkedList list=new LinkedList();
-
-        list.addNode(56);
-        list.addNode(30);
+        
         list.addNode(70);
-
+        list.addNode(30);
+        list.addNode(56);
         list.displayList();
+
+
+
 
     }
 
