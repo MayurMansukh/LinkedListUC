@@ -173,6 +173,58 @@ public class LinkedList<T> {
         prev.Next = temp.Next;
     }
 
+    public <T> void sortList() // sort linked list in ascending order
+    {
+        Node current=head;
+        Node index=null;
+        T temp;
+
+        if(head == null)
+        {
+            return;
+        }
+        else
+        {
+            while(current != null)
+            {
+                index=current.Next;
+                while(index != null)
+                {
+                    if(((Comparable<T>) current.data).compareTo((T) index.data)>0)
+                    {
+                        temp=(T) current.data;
+                        current.data=index.data;
+                        index.data=temp;
+                    }
+                    index=index.Next;
+                }
+                current=current.Next;
+            }
+        }
+    }
+
+    public void display()
+    {
+        Node current=head;
+        int size=0;
+
+        if(head==null)
+        {
+            System.out.println("List is Empty");
+            return;
+        }
+        else
+        {
+            System.out.println("Values of list are: ");
+            while(current!=null)
+            {
+                System.out.println(current.data+" ");
+                size++;
+                current=current.Next;
+            }
+            System.out.println("List size is: "+size);
+        }
+    }
 
     public void displayList() { // display linked List
         Node<T> current=head;
@@ -201,11 +253,9 @@ public class LinkedList<T> {
         list.addNode(70);
 
         list.displayList();
-        
-        list.deleteGivenNode(40);
-
+        list.sortList();
         list.displayList();
-        
+
 
 
 
