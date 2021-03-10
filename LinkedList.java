@@ -79,7 +79,24 @@ public class LinkedList<T> {
     }
 
 
-   
+    public void deleteFirstElement() {
+
+        if(head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        else {
+
+            if(head != tail) {
+                head = head.Next;
+            }
+            else {
+                head = tail = null;
+            }
+        }
+    }
+
+    
     public void displayList() { // display linked List
         Node<T> current=head;
 
@@ -102,10 +119,14 @@ public class LinkedList<T> {
         LinkedList list=new LinkedList();
 
         list.addNode(56);
+        list.addNode(30);
         list.addNode(70);
-        list.addAtmiddle(30,1);
-
         list.displayList();
+        
+        list.deleteFirstElement();
+        list.displayList();
+       
+        
 
 
 
