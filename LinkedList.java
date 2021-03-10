@@ -140,17 +140,37 @@ public class LinkedList<T> {
             System.out.println("Element is not present in the list");
     }
 
-    public void insertAfterNode(Node<T> previous, T data)
+    public void insertAfter(Node<T> prev_node, T new_data) // add node after given node
     {
-        if(previous == null)
+        if (prev_node == null)
         {
-            System.out.println("Previous node cannot be empty");
+            System.out.println("The given previous node cannot be null");
             return;
         }
+        Node<T> new_node = new Node<T>(new_data);
 
-        Node newnode=new Node(data);
-        newnode.Next=previous.Next;
-        previous.Next=newnode;
+        new_node.Next = prev_node.Next;
+
+        prev_node.Next = new_node;
+    }
+
+    void deleteGivenNode(T key) // delete given node in linked list
+    {
+
+        Node<T> temp = head, prev = null;
+
+        if (temp != null && temp.data == key) {
+            head = temp.Next;
+            return;
+        }
+        while (temp != null && temp.data != key) {
+            prev = temp;
+            temp = temp.Next;
+        }
+        if (temp == null)
+            return;
+
+        prev.Next = temp.Next;
     }
 
 
@@ -177,11 +197,16 @@ public class LinkedList<T> {
 
         list.addNode(56);
         list.addNode(30);
+        list.addNode(40);
         list.addNode(70);
-        list.displayList();
-        list.insertAfterNode(30 ,40);
 
-       
+        list.displayList();
+        
+        list.deleteGivenNode(40);
+
+        list.displayList();
+        
+
 
 
 
